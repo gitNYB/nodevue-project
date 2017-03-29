@@ -2,7 +2,7 @@
 ```
   STEP 1: 
 ```  
-  vue init webpack nodevue-project
+  vue init webpack nodevue-project   /n
      //..  no ESlint,no tests  ..
   cd nodevue-project
   npm install
