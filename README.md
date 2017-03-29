@@ -16,3 +16,7 @@
    - input for username
    - input for password
    - button for event
+```
+ cd src/components/
+``` 
+  creat login.vue 
