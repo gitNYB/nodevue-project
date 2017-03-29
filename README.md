@@ -3,7 +3,7 @@
 
 ```
   vue init webpack nodevue-project   
-     //..  no ESlint,no tests  ..
+  //..  no ESlint,no tests  ..
   cd nodevue-project
   npm install
   npm install vue-resource --save-dev
@@ -12,3 +12,8 @@
   //访问 8080端口 
 ```  
 ###  STEP 2: view  创建页面
+ - form for login
+   - input for username
+   - input for password
+   - button for event
+ - form end  
