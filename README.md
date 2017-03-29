@@ -1,7 +1,6 @@
 # nodevue-project
-```
-  STEP 1: 
-```  
+###  STEP 1: 
+
 ```
   vue init webpack nodevue-project   
      //..  no ESlint,no tests  ..
@@ -12,6 +11,4 @@
   npm run dev  
   //访问 8080端口 
 ```  
-```  
-  STEP 2: view  创建页面
-```  
+###  STEP 2: view  创建页面
