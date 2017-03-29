@@ -11,9 +11,8 @@
   npm run dev  
   //访问 8080端口 
 ```  
-###  STEP 2: view  创建页面
+###  STEP 2: view  创建Vue页面
  - form for login
    - input for username
    - input for password
    - button for event
- - form end  
