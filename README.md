@@ -16,10 +16,11 @@
    - input for username
    - input for password
    - button for event
-```
+```shell
  cd src/components/
+ #creat login.vue 
 ``` 
-  creat login.vue 
+  
 ```html
 <template>
 <el-form ref="form" :model="form" label-width="80px">
@@ -48,7 +49,7 @@ export default {
 }
 </script>
 ```
-```
+```shell
 cd src
 #edit main.js
 #add UI组件
@@ -58,7 +59,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI)
 ```
-```
+```shell
 cd src/router
 #edit index.js
 ```
