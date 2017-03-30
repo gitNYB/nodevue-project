@@ -48,3 +48,34 @@ export default {
 }
 </script>
 ```
+```
+cd src
+#edit main.js
+#add UI组件
+```
+```js
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+Vue.use(ElementUI)
+```
+```
+cd src/router
+#edit index.js
+```
+```js
+import login from '@/components/login'
+export default new Router({
+  routes: [
+    {
+      path: '/home',
+      name: 'Hello',
+      component: Hello
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    }
+  ]
+})
+```
