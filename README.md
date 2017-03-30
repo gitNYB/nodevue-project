@@ -80,3 +80,11 @@ export default new Router({
   ]
 })
 ```
+###  STEP 3: Node Server
+```shell
+mdkir server
+cd server
+#add index.js,db.js,api.js
+npm i express –D
+```
+
