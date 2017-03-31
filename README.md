@@ -1,7 +1,7 @@
 # nodevue-project
 ###  STEP 1: 
 
-```
+```shell
   vue init webpack nodevue-project   
   #..  no ESlint,no tests  ..
   cd nodevue-project
@@ -12,10 +12,25 @@
   #访问 8080端口 
 ```  
 ###  STEP 2: view  创建Vue页面
+ - install ElementUI and  vue-resource
+ ```shell
+ npm i element-ui -D
+ npm i vue-resource -D
+ cd src
+ vi main.js
+ ```
+ ```js
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+import VueResource from 'vue-resource'
+Vue.use(ElementUI)
+Vue.use(VueResource)
+ ```
+ 
  - form for login
    - input for username
    - input for password
-   - button for event
+   - button for event   
 ```shell
  cd src/components/
  #creat login.vue 
