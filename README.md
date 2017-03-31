@@ -182,5 +182,20 @@ router.get('/api/login/getAccount',(req,res) => {
 
 module.exports = router;
 ```
-
+```shell
+cd config
+#edit index.js
+```
+- /config/index.js
+```js
+proxyTable: {
+      '/api': {
+          target: 'http://localhost:8081/api/',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api': ''
+          }
+        }
+    }
+ ```
 
