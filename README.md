@@ -1,5 +1,5 @@
 # nodevue-project
-###  STEP 1: 
+###  STEP 1: Vue-cli
 
 ```shell
   vue init webpack nodevue-project   
