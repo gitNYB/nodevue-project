@@ -86,5 +86,101 @@ mdkir server
 cd server
 #add index.js,db.js,api.js
 npm i express –D
+npm i body-parser -D
+npm i mongoose -D
 ```
+-index.js
+```js
+//引入编好的api
+const api = require('./api')
+//引入文件模块
+const fs = require('fs')
+//引入处理路径的模块
+const path = require('path')
+//引入处理post数据的模块
+const bodyParser = require('body-parser')
+//引入Express
+const express = require('express')
+const app = express()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(api)
+//访问静态资源文件，这里访问所有dist目录下的静态资源文件
+app.use(express.static(path.resolve(__dirname,'../dist')))
+//因为是单页面应用，所有请求都走/dist/index.html
+app.get('*',function(req,res){
+  const html = fs.readFileSync(path.resolve(__dirname,'../dist/index.html'),'utf-8')
+  res.send(html)
+})
+//监听8081端口
+app.listen(8081)
+console.log('success listen 8081...')
+```
+-db.js
+```js
+const mongoose = require('mongoose');
+// 连接数据库 如果不自己创建 默认test数据库会自动生成
+mongoose.connect('mongodb://localhost/test');
+
+// 为这次连接绑定事件
+const db = mongoose.connection;
+db.once('error',() => console.log('Mongo connection error'));
+db.once('open',() => console.log('Mongo connection successed'));
+/************** 定义模式loginSchema **************/
+const loginSchema = mongoose.Schema({
+    username : String,
+    password : String
+});
+
+/************** 定义模型Model **************/
+const Models = {
+    Login : mongoose.model('Login',loginSchema)
+}
+
+module.exports = Models;
+```
+-api.js
+```js
+// 可能是我的node版本问题，不用严格模式使用ES6语法会报错
+"use strict";
+const models = require('./db');
+const express = require('express');
+const router = express.Router();
+
+/************** 创建(create) 读取(get) 更新(update) 删除(delete) **************/
+
+// 创建账号接口
+router.post('/api/login/createAccount',(req,res) => {
+    // 这里的req.body能够使用就在index.js中引入了const bodyParser = require('body-parser')
+    let newAccount = new models.Login({
+        username : req.body.username,
+        password : req.body.password
+    });
+    // 保存数据newAccount数据进mongoDB
+    newAccount.save((err,data) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            console.log('createAccount successed');
+            res.send('createAccount successed');
+        }
+    });
+});
+// 获取已有账号接口
+router.get('/api/login/getAccount',(req,res) => {
+    // 通过模型去查找数据库
+    models.Login.find((err,data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+});
+
+module.exports = router;
+```
+
 
