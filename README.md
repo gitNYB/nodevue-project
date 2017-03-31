@@ -89,7 +89,7 @@ npm i express –D
 npm i body-parser -D
 npm i mongoose -D
 ```
--index.js
+- index.js
 ```js
 //引入编好的api
 const api = require('./api')
@@ -117,7 +117,7 @@ app.get('*',function(req,res){
 app.listen(8081)
 console.log('success listen 8081...')
 ```
--db.js
+- db.js
 ```js
 const mongoose = require('mongoose');
 // 连接数据库 如果不自己创建 默认test数据库会自动生成
@@ -140,7 +140,7 @@ const Models = {
 
 module.exports = Models;
 ```
--api.js
+- api.js
 ```js
 // 可能是我的node版本问题，不用严格模式使用ES6语法会报错
 "use strict";
