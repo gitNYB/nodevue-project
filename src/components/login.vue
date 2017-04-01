@@ -24,9 +24,6 @@ export default {
     }
   },
   methods: {
-    alert(){
-      alert('111111')
-    },
     login() {
        // 获取已有账号密码
        this.$http.get('/api/login/getAccount').then(
