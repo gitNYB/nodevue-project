@@ -2,15 +2,15 @@
 ###  STEP 1: Vue-cli
 
 ```shell
-  vue init webpack nodevue-project   
+  vue init webpack nodevue-project
   #..  no ESlint,no tests  ..
   cd nodevue-project
   npm install
   npm install vue-resource --save-dev
   #启动测试  
-  npm run dev  
-  #访问 8080端口 
-```  
+  npm run dev
+  #访问 8080端口
+```
 ###  STEP 2: view  创建Vue页面
  - install ElementUI and  vue-resource
  ```shell
@@ -26,16 +26,16 @@ import VueResource from 'vue-resource'
 Vue.use(ElementUI)
 Vue.use(VueResource)
  ```
- 
+
  - form for login
    - input for username
    - input for password
-   - button for event   
+   - button for event
 ```shell
  cd src/components/
- #creat login.vue 
-``` 
-  
+ #creat login.vue
+```
+
 ```html
 <template>
 <el-form ref="form" :model="form" label-width="80px">
@@ -60,6 +60,29 @@ export default {
         password: ''
       }
     }
+  },
+  methods: {
+    login() {
+       // 获取已有账号密码
+       this.$http.get('/api/login/getAccount').then(
+         (response) => {
+           console.log(response)
+           let params = {
+             username: this.form.username,
+             password: this.form.password
+           }
+           return this.$http.post('/api/login/createAccount', params)
+         }
+       ).then(
+         (response) => {
+           console.log(response)
+         }
+       ).catch(
+         (reject) => {
+           console.log(reject)
+         }
+       )
+       }
   }
 }
 </script>
@@ -213,4 +236,3 @@ proxyTable: {
         }
     }
  ```
-
